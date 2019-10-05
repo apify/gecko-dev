@@ -1862,7 +1862,10 @@ webgpu::Instance* Navigator::Gpu() {
 
 /* static */
 bool Navigator::Webdriver() {
-  return Preferences::GetBool("marionette.enabled", false);
+  // Make the window.navigator.webdriver JS property always false,
+  // to prevent simple detection of browser orchestration using Selenium 
+  return false;
+  //return Preferences::GetBool("marionette.enabled", false);
 }
 
 }  // namespace dom
