@@ -887,6 +887,11 @@ void nsHttpHandler::BuildUserAgent() {
                          mAppVersion.Length() + mCompatFirefox.Length() +
                          mCompatDevice.Length() + mDeviceModelId.Length() + 13);
 
+  // Override User-Agent header to the one used by MacOS version of Firefox.
+  // There is no way to do this in Selenium...
+  mUserAgent.AssignLiteral("Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:69.0) Gecko/20100101 Firefox/69.0");
+  return;
+  
   // Application portion
   mUserAgent.Assign(mLegacyAppName);
   mUserAgent += '/';
